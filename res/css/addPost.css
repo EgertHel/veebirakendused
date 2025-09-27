@@ -1,0 +1,74 @@
+.main-container {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.post-form-container {
+    background-color: #AFB0B0;
+    padding: 30px;
+    border-radius: .5em;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 65vw;
+    box-sizing: border-box;
+    margin: auto;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-row label {
+    width: 90px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-row textarea {
+    flex: 1;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .form-row input[type="file"] {
+    flex: 1;
+  }
+  
+  .create-post-btn {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    width: 20vw;
+    margin: auto;
+  }
+
+  .create-post-btn a {
+    color: white;
+  }
+  
+  .create-post-btn:hover {
+    background-color: #324b81;
+  }
+
+  .choose {
+    background-color: grey;
+    
+  }
+
+  .choose a {
+    color: white;
+    margin: 20px;
+  }
+
+  label + input {
+    border: 2px solid blue;
+  }
