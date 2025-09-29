@@ -91,3 +91,86 @@ a {
     font-size: 1em;
     font-weight: 500;
 }
+
+
+.main-container {
+    width: 100%;
+    margin-top: 60px;
+    padding: 0 10px;
+}
+
+.post-form-container {
+  background-color: #AFB0B0;
+  padding: 30px;
+  border-radius: .5em;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+  
+
+.form-row label {
+    min-width: 90px;
+    font-weight: bold;
+    color: #333;
+}
+  
+
+.form-row textarea {
+    flex: 1;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 1em;
+}
+  
+
+.form-row input[type="file"] {
+    flex: 1;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 0;
+    background: #fff;
+}
+  
+.choose {
+  background-color: grey;
+  width: 100%;
+  max-width: 120px;
+  padding: 6px;
+}
+
+.choose a {
+  color: white;
+}
+
+.create-post-btn {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.create-post-btn:hover {
+    background-color: #324b81;
+}
