@@ -203,15 +203,6 @@ a {
     font-size: 1em;
 }
   
-
-.form-row input[type="file"] {
-    flex: 1;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 6px 0;
-    background: #fff;
-}
   
 .choose {
   background-color: grey;
