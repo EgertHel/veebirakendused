@@ -15,13 +15,14 @@ body {
     align-items: center;
 
     padding: .5em;
-    margin: 0% 0.2%;
     background-color: #AFB0B0;
     border-radius: .5em;
 
-    width: 100%;
+    width: auto;
     position: fixed;
-    top: .5em;
+    top: .3em;
+    left: .3em;
+    right: .3em;
 }
 
 .nav {
@@ -53,6 +54,64 @@ a {
     height: 50px;
 }
 
+#login_container{
+    justify-self: center;
+    margin-top: 30px;
+    margin-left: .5em;
+    margin-right: .5em;
+    padding: 10px;
+    width: 98%;
+    max-width: 600px;
+    border-radius: .5em;
+    background-color: #dddddd;
+}
+
+#login_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login_box a{
+    margin: px;
+}
+
+#login_box .form_boxes{
+    margin-top: 10px;
+    font-size: medium;
+}
+
+#welcome{
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+#welcome + a{
+    color: rgb(12, 164, 215);
+}
+
+#login_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit_btn_login{
+    background-color: #244282;
+    font-weight: bold;
+    width: 50%;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#login_form ~ a{
+    color: rgb(12, 164, 215);
+}
 
 
 @media (max-width: 250px) {
@@ -167,7 +226,7 @@ a {
 }
 
 .post-form-container {
-  background-color: #AFB0B0;
+  background-color: #dddddd;
   padding: 30px;
   border-radius: .5em;
   display: flex;
