@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +17,7 @@
     </header>
 
     <main class="main-container">
-        <form class="post-form-container">
+        <form class="post-form-container" action="index.html">
           <div class="form-row">
             <label for="post-body">Post body</label>
             <textarea id="post-body"></textarea>
@@ -24,14 +25,17 @@
       
           <div class="form-row">
             <label for="file-select">Select file</label>
-            <button class="choose">
-                <a href="#">Choose File</a>
-            </button>
+            <!-- ^^ for peab viitama <input>-ile, mille label ta on (id) ^^ -->
+
+            
+            <input type="file" id="file-select">
+            <!-- ^^ Midagi sellist siia ^^
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file 
+            -->
+
           </div>
       
-          <button type="submit" class="create-post-btn">
-            <a href="index.html">Create post</a>
-          </button>
+          <input type="submit" class="create-post-btn" value="Create post">
         </form>
       </main>
 </body>
