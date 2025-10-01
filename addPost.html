@@ -25,14 +25,8 @@
       
           <div class="form-row">
             <label for="file-select">Select file</label>
-            <!-- ^^ for peab viitama <input>-ile, mille label ta on (id) ^^ -->
-
-            
-            <input type="file" id="file-select">
-            <!-- ^^ Midagi sellist siia ^^
-            https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file 
-            -->
-
+            <input type="file" id="file-select" style="display:none;">
+            <button type="button" class="custom-file-btn" onclick="document.getElementById('file-select').click();">Choose file</button>
           </div>
       
           <input type="submit" class="create-post-btn" value="Create post">

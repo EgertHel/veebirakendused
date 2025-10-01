@@ -259,11 +259,18 @@ a {
 }
   
   
-#choose {
-  background-color: grey;
-  width: 100%;
-  max-width: 120px;
-  padding: 6px;
+.custom-file-btn {
+    background-color: grey;
+    width: 100%;
+    max-width: 120px;
+    padding: 6px;
+    cursor: pointer;
+    border: none;
+    color:white;
+}
+
+.custom-file-btn:hover {
+    background-color: rgb(100, 100, 100);
 }
 
 .create-post-btn {
