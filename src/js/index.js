@@ -1,9 +1,15 @@
 /* jshint esversion: 6 */
 
 window.onload = function() {
+    // Task 4
+    /*
     fetch('https://690285dab208b24affe66246.mockapi.io/api/v1/posts')
      .then(response => response.json())
         .then(json => {
+    */
+    fetch('res/json/posts.json')
+     .then(response => response.json())
+        .then(json => { 
             console.log(json); // Test, what data did we get from endpoint
             for(let i = 0; i < json.length; i++) {
                 // Create elements
@@ -32,10 +38,10 @@ window.onload = function() {
                 section.appendChild(header);
                 
                 // Don't create postImg unless the path is not null
-                if (obj.imgPath != null) {
+                if (obj.imagePath != null) {
                     var postImg = document.createElement("img");
                     postImg.className = "postImage";
-                    postImg.src = obj.imgPath;
+                    postImg.src = obj.imagePath;
                     postImg.alt = "Post image";
                     section.appendChild(postImg);
                 }
@@ -49,7 +55,7 @@ window.onload = function() {
                 footer.className = "postFooter";
                 like.className = "fa-solid fa-thumbs-up like";
                 footer.appendChild(like);
-                footer.appendChild(section);
+                section.appendChild(footer);
 
                 // Add post to the timeline
                 var timeline = document.getElementById('timeline');

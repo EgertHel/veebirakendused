@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="res/css/style.css">
     <script type="text/javascript" src="src/js/index.js"></script>
+    <script type="text/javascript" src="src/js/dropdown.js"></script>
     <script src="https://kit.fontawesome.com/5518273177.js" crossorigin="anonymous"></script>
 </head>
 
@@ -18,7 +19,14 @@
             <li><a href="addPost.html">addPost</a></li>
         </ul>
 
-        <a class="logo" href="login.html"><img src="res/images/profile.jpg" alt="Profile"></a>
+        <div class="dropdown">
+            <a class="logo" href="#" id="profile-btn"><img src="res/images/profile.jpg" alt="Profile"></a>
+            <div class="dropdown-content" id="dropdown-menu">
+                <p class="dropdown-name">John Doe</p>
+                <p class="dropdown-email">john.doe@ut.ee</p>
+                <a href="login.html" class="dropdown-logout">logout</a>
+            </div>
+        </div>
     </header>
 
     <main class="content">

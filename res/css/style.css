@@ -290,3 +290,48 @@ a {
 .create-post-btn:hover {
     background-color: #324b81;
 }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #C6C7C7;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-name,
+.dropdown-email {
+    margin: 5px 0;
+    color: #333;
+    font-size: 1em;
+    text-align: left;
+}
+
+.dropdown-logout {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+    padding: 0;
+    text-align: left;
+    font-size: 1em;
+}
+
+.dropdown-logout:hover {
+    text-decoration: underline;
+}
