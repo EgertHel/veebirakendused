@@ -1,3 +1,5 @@
+Github pages link: https://egerthel.github.io/veebirakendused/
+
 # Homework 2
 
 JSON file is validated by https://jsonlint.com/
