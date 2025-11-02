@@ -31,7 +31,11 @@ window.onload = function() {
                 a.href = "#";
                 profile.src = 'res/images/profile.jpg';
                 profile.alt = "Profile";
-                date.innerText = obj.date;
+                date.innerText = new Date(obj.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                });
                 a.appendChild(profile);
                 header.appendChild(a);
                 header.appendChild(date);
