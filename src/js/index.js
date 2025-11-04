@@ -14,14 +14,14 @@ window.onload = function() {
             for(let i = 0; i < json.length; i++) {
                 // Create elements
                 let obj = json[i];
-                var section = document.createElement("section");
-                var header = document.createElement("header");
-                var a = document.createElement("a");
-                var profile = document.createElement("img");
-                var date = this.document.createElement("p");
-                var postText = document.createElement("p");
-                var footer = document.createElement("footer");
-                var like = document.createElement("i");
+                let section = document.createElement("section");
+                let header = document.createElement("header");
+                let a = document.createElement("a");
+                let profile = document.createElement("img");
+                let date = this.document.createElement("p");
+                let postText = document.createElement("p");
+                let footer = document.createElement("footer");
+                let like = document.createElement("i");
 
                 section.className = "post";
 
@@ -43,7 +43,7 @@ window.onload = function() {
                 
                 // Don't create postImg unless the path is not null
                 if (obj.imagePath != null) {
-                    var postImg = document.createElement("img");
+                    let postImg = document.createElement("img");
                     postImg.className = "postImage";
                     postImg.src = obj.imagePath;
                     postImg.alt = "Post image";
@@ -62,7 +62,7 @@ window.onload = function() {
                 section.appendChild(footer);
 
                 // Add post to the timeline
-                var timeline = document.getElementById('timeline');
+                let timeline = document.getElementById('timeline');
                 timeline.appendChild(section);
             }
             
@@ -71,7 +71,7 @@ window.onload = function() {
             let errDiv = document.createElement("div");
             errDiv.className = 'post';
             errDiv.innerText = err;
-            var timeline = document.getElementById('timeline');
+            let timeline = document.getElementById('timeline');
             timeline.appendChild(errDiv);
         });
 };
