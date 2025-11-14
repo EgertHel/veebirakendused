@@ -1,7 +1,19 @@
-Github pages link: https://egerthel.github.io/veebirakendused/
+# Web Application Development
 
-# Homework 2
+## Project setup
+```
+npm install
+```
 
-JSON file is validated by https://jsonlint.com/
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-JSON is stored online on https://690285dab208b24affe66246.mockapi.io/api/v1/posts
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
