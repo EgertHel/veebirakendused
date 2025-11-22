@@ -34,7 +34,7 @@
       </div>
 
       <button type="submit" class="signup-btn" :disabled="!isPasswordValid || !email">
-        Signup
+        Sign Up
       </button>
     </form>
   </div>
@@ -116,7 +116,6 @@ export default {
   align-items: center;
   min-height: 60vh;
   padding: 20px;
-  background-color: #e8e8e8;
 }
 
 .signup-form {
