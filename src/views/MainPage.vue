@@ -1,5 +1,4 @@
 <template>
-  <h3>This is the main page</h3>
   <Posts></Posts>
   <button id="resetBtn" @click="resetAllLikes">Reset All Likes</button>
 </template>

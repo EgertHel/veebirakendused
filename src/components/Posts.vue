@@ -81,6 +81,7 @@ export default {
   width: 80%;
   height: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: none;
 }
 
