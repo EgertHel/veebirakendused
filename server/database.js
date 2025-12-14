@@ -3,8 +3,8 @@ const Pool = require('pg').Pool; // Importing the pg module to interact with Pos
 
 const pool = new Pool({
     user: "postgres",
-    password: "", // Enter your password here
-    database: "", // Enter your database name here
+    password: "OliverPiir", // Enter your password here
+    database: "hw4", // Enter your database name here
     host: "localhost",
     port: "5432" // Default port for postgresql is 5432
 });

@@ -186,13 +186,13 @@ app.post('/auth/login', async (req, res) => {
         );
 
         if (user.rows.length === 0) {
-            return res.status(401).json({ error: "User is not registered" });
+            return res.status(401).json({ errors: ["User is not registered"] });
         }
 
         // Compare provided password with hashed password in database
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         if (!validPassword) {
-            return res.status(401).json({ error: "Incorrect password" });
+            return res.status(401).json({ errors: ["Incorrect password"] });
         }
 
         const token = await generateJWT(user.rows[0].id);
@@ -202,7 +202,7 @@ app.post('/auth/login', async (req, res) => {
             .json({ user_id: user.rows[0].id })
             .send;
     } catch (error) {
-        res.status(401).json({ error: error.message });
+        res.status(401).json({ errors: [error.message] });
     }
 });
 
