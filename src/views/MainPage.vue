@@ -1,5 +1,4 @@
 <template>
-  <Navbar></Navbar>
   <button class="Btn red" @click="logOut">Logout</button>
   <Posts></Posts>
   <button class="Btn green" @click="addPost">Add post</button>
@@ -8,18 +7,12 @@
 
 
 <script>
-import CustomHeader from "@/components/Header.vue"
-import CustomFooter from "@/components/Footer.vue"
 import Posts from "@/components/Posts.vue";
-import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "MainPage",
   components: {
-    CustomHeader,
-    CustomFooter,
     Posts,
-    Navbar
   },
   methods: {
     addPost() {

@@ -1,5 +1,6 @@
 <template>
   <CustomHeader></CustomHeader>
+  <Navbar></Navbar>
   <router-view/>
   <CustomFooter></CustomFooter>
 </template>
@@ -7,12 +8,14 @@
 <script>
 import CustomHeader from "@/components/Header.vue"
 import CustomFooter from "@/components/Footer.vue"
+import Navbar from "./components/Navbar.vue";
 
 export default {
   name: "App",
   components: {
     CustomHeader,
     CustomFooter,
+    Navbar
   }
 }
 </script>

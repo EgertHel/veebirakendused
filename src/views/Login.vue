@@ -1,6 +1,5 @@
 <template>
   <div class="page-container">
-    <Navbar></Navbar>
     <div class="form-container">
       <div class="form-content">
         <div class="form-group">
@@ -36,12 +35,9 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
 export default {
   name: 'Login',
-  components: {
-    Navbar
-  },
+  components: {},
   data() {
     return {
       email: '',
