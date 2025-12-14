@@ -26,7 +26,7 @@ app.post('/api/posts', async (req, res) => {
         console.log("A post request has arrived");
         const post = req.body;
         const newpost = await pool.query(
-            "INSERT INTO posttable(title, body, date) values ($1, $2, $3)    RETURNING*", [post.title, post.body, post.date]
+            "INSERT INTO posts(body) values ($1)    RETURNING*", [post.body]
         );
         res.json(newpost);
     } catch (err) {
@@ -39,9 +39,22 @@ app.get('/api/posts', async (req, res) => {
     try {
         console.log("Get posts request has arrived");
         const posts = await pool.query(
-            "SELECT * FROM posttable"
+            "SELECT * FROM posts"
         );
         res.json(posts.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// Deletes all posts
+app.delete('/api/posts', async (req, res) => {
+    try {
+        console.log("Delete all posts request has arrived");
+        const deletepost = await pool.query(
+            "DELETE FROM posts"
+        );
+        res.json(deletepost);
     } catch (err) {
         console.error(err.message);
     }
@@ -53,8 +66,13 @@ app.get('/api/posts/:id', async (req, res) => {
         console.log("Get a post with route parameter request has arrived");
         const { id } = req.params;
         const posts = await pool.query(
-            "SELECT * FROM posttable WHERE id = $1", [id]
+            "SELECT * FROM posts WHERE id = $1", [id]
         );
+        if (posts.rows.length === 0) {
+            return res.status(404).json({
+                error: "Post not found"
+            })
+        }
         res.json(posts.rows[0]);
     } catch (err) {
         console.error(err.message);
@@ -68,7 +86,7 @@ app.put('/api/posts/:id', async (req, res) => {
         const post = req.body;
         console.log("Update request has arrived");
         const updatepost = await pool.query(
-            "UPDATE posttable SET (title, body, date) = ($2, $3, $4) WHERE id = $1 RETURNING*", [id, post.title, post.body, post.date]
+            "UPDATE posts SET (body, date) = ($2, CURRENT_TIMESTAMP) WHERE id = $1 RETURNING*", [id, post.body]
         );
         res.json(updatepost);
     } catch (err) {
@@ -82,7 +100,7 @@ app.delete('/api/posts/:id', async (req, res) => {
         const { id } = req.params;
         console.log("Delete a post request has arrived");
         const deletepost = await pool.query(
-            "DELETE FROM posttable WHERE id = $1 RETURNING*", [id]
+            "DELETE FROM posts WHERE id = $1 RETURNING*", [id]
         );
         res.json(deletepost);
     } catch (err) {

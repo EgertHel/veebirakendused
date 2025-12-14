@@ -46,7 +46,7 @@ export default createStore({
       commit("SET_ERROR", null);
 
       try {
-        const response = await fetch("https://690285dab208b24affe66246.mockapi.io/api/v1/posts");
+        const response = await fetch("http://localhost:3000/api/posts");
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -75,6 +75,22 @@ export default createStore({
 
     resetAllLikes({ commit }) {
       commit("RESET_ALL_LIKES");
+    },
+
+    async deleteAll({ commit }) {
+      try {
+        const response = await fetch("http://localhost:3000/api/posts", {
+          method: "DELETE"
+        })
+
+        if (!response.ok) {
+          throw new Error("Failed to delete all posts")
+        }
+
+        commit("SET_POSTS", [])
+      } catch (err) {
+        console.error(err)
+      }
     }
   },
   modules: {

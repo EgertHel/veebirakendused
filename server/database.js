@@ -26,17 +26,16 @@ const execute = async(query1, query2) => {
 // Query to create tables if they do not exist
 const createTblQuery1 = `
     CREATE TABLE IF NOT EXISTS "posts" (
-	    "id" SERIAL PRIMARY KEY,         
-	    "title" VARCHAR(200) NOT NULL,
+	    "id" SERIAL PRIMARY KEY,
 	    "body" VARCHAR(200) NOT NULL,
-        "date" VARCHAR(200) NOT NULL 
+        "date" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
     );`;
 
 const createTblQuery2 = `
     CREATE TABLE IF NOT EXISTS "users" (
         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
         email VARCHAR(200) NOT NULL UNIQUE,
-        password VARCHAR(200) NOT NULL 
+        password VARCHAR(200) NOT NULL
     );`;
 
 // A function to execute the previous query   

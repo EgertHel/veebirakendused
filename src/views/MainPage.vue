@@ -1,6 +1,8 @@
 <template>
+  <button class="Btn red" @click="logOut">Logout</button>
   <Posts></Posts>
-  <button id="resetBtn" @click="resetAllLikes">Reset All Likes</button>
+  <button class="Btn green" @click="addPost">Add post</button>
+  <button class="Btn red" @click="deleteAll">Delete all</button>
 </template>
 
 
@@ -17,8 +19,18 @@ export default {
     Posts
   },
   methods: {
-    resetAllLikes() {
-      this.$store.dispatch("resetAllLikes");
+    addPost() {
+      this.$router.push("/addpost");
+    },
+
+    deleteAll() {
+      this.$store.dispatch("deleteAll");
+    },
+
+    logOut() {
+      // TODO: log out
+
+      this.$router.push("/signup");
     }
   
   }
@@ -26,13 +38,20 @@ export default {
 </script>
 
 <style>
-#resetBtn {
-  margin-top: 10px;
+.Btn {
+  margin: 10px 5px;
   padding: 8px 16px;
-  background-color: #c52115;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.red {
+  background-color: #c52115;
+}
+
+.green {
+  background-color: #3b8132;
 }
 </style>

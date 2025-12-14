@@ -1,5 +1,5 @@
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
 
   // Component name
@@ -22,8 +22,17 @@ export default {
   },
 
   methods: {
-    likePost(postId) {
-      this.$store.commit("INCREMENT_LIKES", postId);
+
+    formatDate(date) {
+      return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      }).format(new Date(date))
+    },
+
+    navigatePost(postId) {
+      this.$router.push(`/post/${postId}`)
     }
   },
   
@@ -47,14 +56,18 @@ export default {
     <div v-else-if="error" class="post">
       <p>Error: {{ error }}</p>
     </div>
+
+    <div v-else-if="posts.length === 0" class="post">
+      <h2>No posts to show</h2>
+    </div>
     
-    <section v-else v-for="post in posts" :key="post.id" class="post">
+    <section v-else v-for="post in posts" :key="post.id" class="post" @click="navigatePost(post.id)">
       
       <header class="postHeader">
         <a class="logo" href="#">
           <img :src="profileImage" alt="Profile">
         </a>
-        <p>{{ post.date }}</p>
+        <p>{{ formatDate(post.date) }}</p>
       </header>
       
       <img v-if="post.imagePath" 
@@ -63,13 +76,7 @@ export default {
            alt="Post image"
       />
       
-      <p class="postText">{{ post.content }}</p>
-      
-      <footer class="postFooter">
-        <i class="fa-solid fa-thumbs-up like"
-        @click="likePost(post.id)" ></i>
-        <span class="like-count"> {{ post.likes }} likes</span>
-      </footer>
+      <p class="postText">{{ post.body }}</p>
 
     </section>
   </div>
@@ -92,6 +99,10 @@ export default {
   border-radius: .5em;
   padding: 0.8% 1%;
   border: 2px solid #d9d9d9;
+}
+
+.post:hover {
+    cursor: pointer;
 }
 
 .postHeader {
@@ -117,21 +128,5 @@ export default {
   height: auto;
   margin: 1% 5%;
   border-radius: .5em;
-}
-
-.postFooter {
-  height: 25px;
-  display: flex;
-  justify-items: left;
-}
-
-.like {
-  color: #a3a3a3;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.like:hover {
-  color: #4267B2;
 }
 </style>
