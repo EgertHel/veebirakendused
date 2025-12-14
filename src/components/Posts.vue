@@ -90,6 +90,7 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
+  margin: 0px auto;
 }
 
 .post {

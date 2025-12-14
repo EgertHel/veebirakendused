@@ -2,11 +2,6 @@
     <header>
         <div class="center">
             <h1>Web Application Development</h1>
-
-            <nav class="header-nav">
-                <router-link to="/">Main page</router-link>
-                <router-link to="/Signup">Signup</router-link>
-            </nav>
         </div>
 
         <div class="profile">
@@ -35,23 +30,6 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
-}
-
-.header-nav {
-  display: inline-flex;
-  gap: 1.5rem;
-}
-
-.header-nav a {
-  padding: 0.5rem 1rem;
-  border: 2px solid #2c3e50;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #2c3e50;
-}
-
-.header-nav a:hover {
-  opacity: 0.8;
 }
 
 .profile {

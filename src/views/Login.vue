@@ -1,10 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="nav-bar">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contacts">Contacts</router-link>
-    </div>
-
+    <Navbar></Navbar>
     <div class="form-container">
       <div class="form-content">
         <div class="form-group">
@@ -40,8 +36,12 @@
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue';
 export default {
   name: 'Login',
+  components: {
+    Navbar
+  },
   data() {
     return {
       email: '',
@@ -97,8 +97,7 @@ export default {
 <style scoped>
 .page-container {
   max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 0px auto;
 }
 
 .nav-bar {

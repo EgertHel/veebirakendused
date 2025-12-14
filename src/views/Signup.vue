@@ -1,10 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="nav-bar">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contacts">Contacts</router-link>
-    </div>
-
+    <Navbar></Navbar>
     <div class="form-container">
       <div class="form-content">
         <div class="form-group">
@@ -36,8 +32,13 @@
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue';
+
 export default {
   name: 'Signup',
+  components: {
+    Navbar
+  },
   data() {
     return {
       email: '',
@@ -90,23 +91,7 @@ export default {
 <style scoped>
 .page-container {
   max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-.nav-bar {
-  background-color: #b8b8b8;
-  padding: 15px;
-  text-align: center;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-
-.nav-bar a {
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 10px;
+  margin: 0px auto;
 }
 
 .form-container {
