@@ -27,10 +27,9 @@ export default {
       this.$store.dispatch("deleteAll");
     },
 
-    logOut() {
-      // TODO: log out
-
-      this.$router.push("/signup");
+    async logOut() {
+      await this.$store.dispatch("logout");
+      this.$router.push("/login");
     }
   
   }

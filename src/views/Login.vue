@@ -13,7 +13,7 @@
               type="email"
               v-model="email"
               placeholder="Email"
-              @keyup.enter="handleSignup"
+              @keyup.enter="handleLogin"
           />
         </div>
 
@@ -23,11 +23,15 @@
               type="password"
               v-model="password"
               placeholder="Password"
-              @keyup.enter="handleSignup"
+              @keyup.enter="handleLogin"
           />
         </div>
 
-        <button @click="handleSignup" class="action-btn">Signup</button>
+        <div class="button-group">
+          <button @click="handleLogin" class="action-btn">Login</button>
+          <span class="or-text">Or</span>
+          <button @click="goToSignup" class="action-btn">Signup</button>
+        </div>
 
         <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       </div>
@@ -37,7 +41,7 @@
 
 <script>
 export default {
-  name: 'Signup',
+  name: 'Login',
   data() {
     return {
       email: '',
@@ -46,7 +50,7 @@ export default {
     };
   },
   methods: {
-    async handleSignup() {
+    async handleLogin() {
       this.errorMessage = '';
 
       if (!this.email || !this.password) {
@@ -55,7 +59,7 @@ export default {
       }
 
       try {
-        const response = await fetch('http://localhost:3000/auth/signup', {
+        const response = await fetch('http://localhost:3000/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -75,13 +79,16 @@ export default {
           });
           await this.$router.push('/');
         } else {
-          const errorData = await response.text();
-          this.errorMessage = errorData || 'Signup failed';
+          const errorData = await response.json();
+          this.errorMessage = errorData.error || 'Login failed';
         }
       } catch (error) {
         this.errorMessage = 'Network error occurred';
-        console.error('Signup error:', error);
+        console.error('Login error:', error);
       }
+    },
+    goToSignup() {
+      this.$router.push('/signup');
     }
   }
 };
@@ -119,16 +126,12 @@ export default {
   background-color: #e8f5e9;
   padding: 40px;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .form-group {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  width: 100%;
 }
 
 .form-group label {
@@ -145,6 +148,14 @@ export default {
   font-size: 14px;
 }
 
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
 .action-btn {
   background-color: #64b5f6;
   color: white;
@@ -153,11 +164,15 @@ export default {
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 20px;
 }
 
 .action-btn:hover {
   background-color: #42a5f5;
+}
+
+.or-text {
+  font-weight: bold;
+  color: #666;
 }
 
 .error {

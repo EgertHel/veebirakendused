@@ -2,13 +2,23 @@ import { createStore } from "vuex"
 
 export default createStore({
   state: {
+    user: null,
     posts: [],
     loading: false,
     error: null
   },
   getters: {
+    isLoggedIn: state => !!state.user
   },
   mutations: {
+    SET_USER(state, user) {
+      state.user = user;
+    },
+
+    CLEAR_USER(state) {
+      state.user = null;
+    },
+
     SET_POSTS(state, fetchedPosts) {
       state.posts = fetchedPosts.map(post => ({
         // To copy all existing properties from the API data into the new post object.
@@ -90,6 +100,18 @@ export default createStore({
         commit("SET_POSTS", [])
       } catch (err) {
         console.error(err)
+      }
+    },
+
+    async logout({ commit }) {
+      try {
+        await fetch("http://localhost:3000/auth/logout", {
+          method: "POST",
+          credentials: "include"
+        });
+        commit("CLEAR_USER");
+      } catch (error) {
+        console.error("Logout errror:", error);
       }
     }
   },
