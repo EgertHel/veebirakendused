@@ -25,7 +25,11 @@
 
         <button @click="handleSignup" class="action-btn">Signup</button>
 
-        <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+        <div v-if="errorMessages.length > 0" class="error-container">
+          <ul class="error-list">
+            <li v-for="(error, index) in errorMessages" :key="index">{{ error }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -43,15 +47,15 @@ export default {
     return {
       email: '',
       password: '',
-      errorMessage: ''
+      errorMessages: []
     };
   },
   methods: {
     async handleSignup() {
-      this.errorMessage = '';
+      this.errorMessages = [];
 
       if (!this.email || !this.password) {
-        this.errorMessage = 'Please provide both email and password';
+        this.errorMessages = ['Please provide both email and password'];
         return;
       }
 
@@ -76,11 +80,17 @@ export default {
           });
           await this.$router.push('/');
         } else {
-          const errorData = await response.text();
-          this.errorMessage = errorData || 'Signup failed';
+          const errorData = await response.json();
+          if (errorData.errors) {
+            this.errorMessages = errorData.errors;
+          } else if (errorData.error) {
+            this.errorMessages = [errorData.error];
+          } else {
+            this.errorMessages = ['Signup failed'];
+          }
         }
       } catch (error) {
-        this.errorMessage = 'Network error occurred';
+        this.errorMessages = ['Network error occurred'];
         console.error('Signup error:', error);
       }
     }
@@ -145,9 +155,20 @@ export default {
   background-color: #42a5f5;
 }
 
-.error {
-  color: #d32f2f;
+.error-container {
   margin-top: 15px;
+  width: 100%;
+}
+
+.error-list {
+  color: #d32f2f;
   font-size: 14px;
+  list-style-position: inside;
+  padding-left: 0;
+  text-align: left;
+}
+
+.error-list li {
+  margin-bottom: 5px;
 }
 </style>

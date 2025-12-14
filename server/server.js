@@ -114,12 +114,44 @@ app.post('/auth/signup', async (req, res) => {
         console.log("A signup request has arrived");
         const { email, password } = req.body;
 
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ errors: ["Invalid email format"] });
+        }
+
+        // Validate password
+        const passwordErrors = [];
+
+        if (password.length < 8 || password.length >= 15) {
+            passwordErrors.push('Password must be 8-14 characters');
+        }
+        if (!/^[A-Z]/.test(password)) {
+            passwordErrors.push('Must start with uppercase letter');
+        }
+        if (!/[A-Z]/.test(password)) {
+            passwordErrors.push('Must contain uppercase letter');
+        }
+        if ((password.match(/[a-z]/g) || []).length < 2) {
+            passwordErrors.push('Must contain at least 2 lowercase letters');
+        }
+        if (!/\d/.test(password)) {
+            passwordErrors.push('Must contain a number');
+        }
+        if (!password.includes('_')) {
+            passwordErrors.push('Must contain underscore');
+        }
+
+        if (passwordErrors.length > 0) {
+            return res.status(400).json({ errors: passwordErrors });
+        }
+
         // Check if user already exists
         const existingUser = await pool.query(
             "SELECT * FROM users WHERE email = $1", [email]
         );
         if (existingUser.rows.length > 0) {
-            return res.status(400).send("User already exists");
+            return res.status(400).json({ errors: ["User already exists"] });
         }
 
         const salt = await bcrypt.genSalt();
@@ -138,7 +170,7 @@ app.post('/auth/signup', async (req, res) => {
             .send;
     } catch (err) {
         console.error(err.message);
-        res.status(400).send(err.message);
+        res.status(400).json({ errors: [err.message] });
     }
 });
 
